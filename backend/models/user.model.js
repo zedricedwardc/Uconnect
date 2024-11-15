@@ -2,7 +2,6 @@ import mongoose, { mongo } from 'mongoose';
 
 const userSchema = new mongoose.Schema(
     {
-        //member since nov 2024 createdAt
         username:{
             type: String,
             require: true,

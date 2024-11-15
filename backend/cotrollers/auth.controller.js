@@ -6,6 +6,9 @@ export const signup = async (req,res) => {
     try {
         const { fullName, username, email, password } = req.body;
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!email.endsWith("@g.batstate-u.edu.ph")) { 
+			return res.status(400).json({ error: "Invalid email. Please make sure it ends with '@g.batstate-u.edu.ph'." });
+		}
 		if (!emailRegex.test(email)) {
 			return res.status(400).json({ error: "Invalid email format" });
 		}
@@ -28,6 +31,7 @@ export const signup = async (req,res) => {
 			email,
 			password: hashedPassword,
 		});
+		
         if (newUser) {
 			generateTokenAndSetCookie(newUser._id, res);
 			await newUser.save();
