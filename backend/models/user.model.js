@@ -40,11 +40,11 @@ const userSchema = new mongoose.Schema(
             type: String,
             default: "",
         },
-        coverImage:{
+        coverImg:{
             type: String,
             default: "",
         },
-        Bio:{
+        bio:{
             type: String,
             default: "",
         },
