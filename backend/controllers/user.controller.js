@@ -82,7 +82,7 @@ export const getSuggestedUsers = async (req, res) => {
         res.status(200).json(suggestedUsers);
 
 	} catch (error) {
-		console.log("Error in updateUser: ", error.message);
+		console.log("Error in suggestedUser: ", error.message);
 		res.status(500).json({ error: error.message });
 	}
 };
@@ -129,10 +129,10 @@ export const updateUser = async (req, res) => {
 			const uploadedResponse = await cloudinary.uploader.upload(coverImg);
 			coverImg = uploadedResponse.secure_url;
 		}
-
-        if (!email.endsWith("@g.batstate-u.edu.ph")) { 
-			return res.status(400).json({ error: "Invalid email. Please make sure it ends with '@g.batstate-u.edu.ph'." });
-		}
+		// if (!email.endsWith("@g.batstate-u.edu.ph")) { 
+		// 	return res.status(400).json({ error: "Invalid email. Please make sure it ends with '@g.batstate-u.edu.ph'." });
+		// }
+        
 
 		user.fullName = fullName || user.fullName;
 		user.email = email || user.email;

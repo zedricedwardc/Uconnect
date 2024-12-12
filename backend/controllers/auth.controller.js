@@ -6,11 +6,12 @@ export const signup = async (req,res) => {
     try {
         const { fullName, username, email, password } = req.body;
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		// if (!email.endsWith("@g.batstate-u.edu.ph")) { 
-		// 	return res.status(400).json({ error: "Invalid email. Please make sure it ends with '@g.batstate-u.edu.ph'." });
-		// }
+		
 		if (!emailRegex.test(email)) {
 			return res.status(400).json({ error: "Invalid email format" });
+		}
+		if (!email.endsWith("@g.batstate-u.edu.ph")) { 
+			return res.status(400).json({ error: "Invalid email. Please make sure it ends with '@g.batstate-u.edu.ph'." });
 		}
 		const existingUser = await User.findOne({ username });
 		if (existingUser) {
@@ -72,7 +73,7 @@ export const login = async (req, res) => {
 			followers: user.followers,
 			following: user.following,
 			profileImg: user.profileImg,
-			coverImg: user.coverImg,
+			coverImg: user.coverImage,
 		});
 	} catch (error) {
 		console.log("Error in login controller", error.message);
