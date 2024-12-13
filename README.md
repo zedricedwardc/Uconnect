@@ -120,11 +120,6 @@ uconnect/
 
 ---
 
-## **License**
-ISC
-
----
-
 ## **Acknowledgments**
 - MongoDB for database solutions
 - Cloudinary for file storage services
